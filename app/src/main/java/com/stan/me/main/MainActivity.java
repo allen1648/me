@@ -22,6 +22,7 @@ public class MainActivity extends BaseActivity implements MainContract.View {
     private MaterialMenuDrawable mMaterialMenuDrawable;
     private boolean mIsDrawerOpened;
     private MainPresenter mPresenter;
+    private String mCurrentFragmentTag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +31,9 @@ public class MainActivity extends BaseActivity implements MainContract.View {
         initToolbar();
         initDrawerLayout();
         initNavigationView();
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, MovieFragment.getInstance()).commit();
         mPresenter = new MainPresenter();
         mPresenter.attachView(this);
+        replaceFragment(MovieFragment.getInstance(), MovieFragment.TAG);
     }
 
     private void initToolbar() {
@@ -53,9 +54,9 @@ public class MainActivity extends BaseActivity implements MainContract.View {
             @Override
             public void onClick(View v) {
                 if (mIsDrawerOpened) {
-                    mDrawerLayout.closeDrawer(Gravity.LEFT);
+                    switchDrawer(false);
                 } else {
-                    mDrawerLayout.openDrawer(Gravity.LEFT);
+                    switchDrawer(true);
                 }
             }
         });
@@ -114,9 +115,10 @@ public class MainActivity extends BaseActivity implements MainContract.View {
     }
 
     @Override
-    public void replaceFragment(Fragment fragment) {
-        if (!getSupportFragmentManager().getFragments().contains(fragment)) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
+    public void replaceFragment(Fragment fragment, String tag) {
+        if (mCurrentFragmentTag != tag) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment, tag).commit();
+            mCurrentFragmentTag = tag;
         }
     }
 

@@ -11,7 +11,7 @@ public class MainContract {
 
     interface View extends BaseView<Presenter> {
         void setTitle(String title);
-        void replaceFragment(Fragment fragment);
+        void replaceFragment(Fragment fragment, String tag);
         void setMenuTransformationOffset(float slideOffset);
         void setMenuIconState(MaterialMenuDrawable.IconState iconState);
         void switchDrawer(boolean open);

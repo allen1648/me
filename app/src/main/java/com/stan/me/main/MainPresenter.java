@@ -6,8 +6,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 
 import com.balysv.materialmenu.MaterialMenuDrawable;
+import com.stan.core.MeApplication;
 import com.stan.core.mvp.BaseView;
-import com.stan.me.MeApplication;
 import com.stan.me.R;
 import com.stan.me.movie.MovieFragment;
 import com.stan.me.photography.PhotoFragment;
@@ -27,14 +27,14 @@ public class MainPresenter implements MainContract.Presenter {
 
     @Override
     public void onMovieClick() {
-        mView.replaceFragment(MovieFragment.getInstance());
+        mView.replaceFragment(MovieFragment.getInstance(), MovieFragment.TAG);
         mView.setTitle(MeApplication.getInstance().getString(R.string.movie));
         mView.switchDrawer(false);
     }
 
     @Override
     public void onPhotoClick() {
-        mView.replaceFragment(PhotoFragment.getInstance());
+        mView.replaceFragment(PhotoFragment.getInstance(), PhotoFragment.TAG);
         mView.setTitle(MeApplication.getInstance().getString(R.string.photopraphy));
         mView.switchDrawer(false);
     }

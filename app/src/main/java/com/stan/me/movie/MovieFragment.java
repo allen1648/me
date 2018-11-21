@@ -18,6 +18,7 @@ import com.stan.me.widgets.ViewFlipperEmpty;
 import java.util.List;
 
 public class MovieFragment extends BaseFragment implements MovieContract.View {
+    public static final String TAG = "MovieFragment";
     private MoviePresenter mPresenter;
     private RecyclerView mRecyclerView;
     private MovieAdapter mMovieAdapter;
@@ -25,7 +26,8 @@ public class MovieFragment extends BaseFragment implements MovieContract.View {
     private ViewFlipperEmpty mEmptyView;
 
     public static Fragment getInstance() {
-        return new MovieFragment();
+        MovieFragment fragment = new MovieFragment();
+        return fragment;
     }
 
     @Nullable
