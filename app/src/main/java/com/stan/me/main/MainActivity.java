@@ -1,4 +1,4 @@
-package com.stan.me.Main;
+package com.stan.me.main;
 
 import android.graphics.Color;
 import android.os.Bundle;
