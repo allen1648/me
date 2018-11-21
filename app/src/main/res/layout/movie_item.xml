@@ -9,7 +9,7 @@
     android:layout_marginRight="@dimen/content_margin"
     app:cardCornerRadius="6dp"
     app:cardElevation="6dp"
-    tools:context=".MainActivity">
+    tools:context=".Main.MainActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"

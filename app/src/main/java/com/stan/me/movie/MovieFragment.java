@@ -64,16 +64,6 @@ public class MovieFragment extends BaseFragment implements MovieContract.View {
     }
 
     @Override
-    public void setPresenter(MovieContract.Presenter presenter) {
-        mPresenter = (MoviePresenter) presenter;
-    }
-
-    @Override
-    public void onNetworkError(Throwable throwable) {
-
-    }
-
-    @Override
     public void showProgress() {
         mEmptyView.setVisibility(View.VISIBLE);
         mEmptyView.showProgress();

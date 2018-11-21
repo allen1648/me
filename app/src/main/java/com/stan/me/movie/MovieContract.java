@@ -8,9 +8,9 @@ import java.util.List;
 
 public class MovieContract {
     interface View extends BaseView<Presenter> {
+        void updateMovies(List<Top250Info.MovieInfo> movieInfos);
         void showProgress();
         void hideProgress();
-        void updateMovies(List<Top250Info.MovieInfo> movieInfos);
     }
 
     interface Presenter extends BasePresenter {

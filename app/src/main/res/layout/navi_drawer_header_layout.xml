@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Main.MainActivity">
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:scaleType="centerCrop"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_launcher_foreground" />
+        android:src="@drawable/material_head1" />
 
 </LinearLayout>
