@@ -1,0 +1,24 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Material.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <!--status bar color-->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!--window color-->
+        <item name="android:windowBackground">@color/colorBackground</item>
+    </style>
+
+    <style name="textContent">
+        <item name="android:textSize">12dp</item>
+        <item name="android:textColor">@color/text_color_gray</item>
+    </style>
+
+    <style name="textTitle">
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/color_level_2</item>
+    </style>
+
+</resources>

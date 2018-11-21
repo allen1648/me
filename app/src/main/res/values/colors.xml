@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorBackground">#ffffff</color>
+    <color name="text_color_gray">#777</color>
+    <color name="color_level_0">#00000000</color> <!-- 用于ListView透明选中背景 -->
+    <color name="color_level_1">#000000</color> <!-- 用于大标题 -->
+    <color name="color_level_2">#333333</color> <!-- 用于小标题 -->
+    <color name="color_level_3">#1A1A1A</color> <!-- 4C4C4C用于正文, tab -->
+    <color name="color_level_4">#666666</color> <!-- 用于说明性文字 -->
+    <color name="color_level_5">#999999</color> <!-- 用于输入框等提示下文字 -->
+    <color name="color_title">#00897B</color>
+    <color name="white">#ffffff</color>
+</resources>

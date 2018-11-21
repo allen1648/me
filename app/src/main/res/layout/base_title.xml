@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="55dp"
+    android:background="@color/colorPrimary">
+
+    <com.balysv.materialmenu.MaterialMenuView
+        android:id="@+id/mmv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_margin="5dp"
+        app:mm_color="@color/white"
+        app:mm_scale="1"
+        app:mm_strokeWidth="2"
+        app:mm_transformDuration="3000" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/mmv"
+        android:text="Material Design"
+        android:textColor="@color/white"
+        android:textSize="20dp" />
+
+</RelativeLayout>
