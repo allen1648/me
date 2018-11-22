@@ -1,4 +1,4 @@
-package com.stan.me.adapters;
+package com.stan.me.movie;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;

@@ -9,7 +9,7 @@ import com.stan.core.mvp.BaseView;
 
 public class MainContract {
 
-    interface View extends BaseView<Presenter> {
+    interface View extends BaseView {
         void setTitle(String title);
         void replaceFragment(Fragment fragment, String tag);
         void setMenuTransformationOffset(float slideOffset);

@@ -7,7 +7,7 @@ import com.stan.core.mvp.BaseView;
 import java.util.List;
 
 public class MovieContract {
-    interface View extends BaseView<Presenter> {
+    interface View extends BaseView {
         void updateMovies(List<Top250Info.MovieInfo> movieInfos);
         void showProgress();
         void hideProgress();

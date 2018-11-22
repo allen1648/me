@@ -12,14 +12,12 @@ import android.view.ViewGroup;
 import com.stan.core.http.bean.Top250Info;
 import com.stan.me.BaseFragment;
 import com.stan.me.R;
-import com.stan.me.adapters.MovieAdapter;
 import com.stan.me.widgets.ViewFlipperEmpty;
 
 import java.util.List;
 
-public class MovieFragment extends BaseFragment implements MovieContract.View {
+public class MovieFragment extends BaseFragment<MovieContract.Presenter> implements MovieContract.View {
     public static final String TAG = "MovieFragment";
-    private MoviePresenter mPresenter;
     private RecyclerView mRecyclerView;
     private MovieAdapter mMovieAdapter;
     private View mContentView;
@@ -84,5 +82,10 @@ public class MovieFragment extends BaseFragment implements MovieContract.View {
         } else {
             mMovieAdapter.setData(movieInfos);
         }
+    }
+
+    @Override
+    public void setPresenter() {
+        mPresenter = new MoviePresenter();
     }
 }

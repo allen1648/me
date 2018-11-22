@@ -16,12 +16,11 @@ import com.stan.me.BaseActivity;
 import com.stan.me.R;
 import com.stan.me.movie.MovieFragment;
 
-public class MainActivity extends BaseActivity implements MainContract.View {
+public class MainActivity extends BaseActivity<MainContract.Presenter> implements MainContract.View {
     private Toolbar mToolbar;
     private DrawerLayout mDrawerLayout;
     private MaterialMenuDrawable mMaterialMenuDrawable;
     private boolean mIsDrawerOpened;
-    private MainPresenter mPresenter;
     private String mCurrentFragmentTag;
 
     @Override
@@ -31,8 +30,6 @@ public class MainActivity extends BaseActivity implements MainContract.View {
         initToolbar();
         initDrawerLayout();
         initNavigationView();
-        mPresenter = new MainPresenter();
-        mPresenter.attachView(this);
         replaceFragment(MovieFragment.getInstance(), MovieFragment.TAG);
     }
 
@@ -142,5 +139,10 @@ public class MainActivity extends BaseActivity implements MainContract.View {
         } else {
             mDrawerLayout.closeDrawer(Gravity.LEFT);
         }
+    }
+
+    @Override
+    public void setPresenter() {
+        mPresenter = new MainPresenter();
     }
 }
