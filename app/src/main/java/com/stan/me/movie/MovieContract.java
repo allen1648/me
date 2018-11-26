@@ -13,7 +13,7 @@ public class MovieContract {
         void hideProgress();
     }
 
-    interface Presenter extends BasePresenter {
+    interface Presenter extends BasePresenter<View> {
         void getMovie();
     }
 }

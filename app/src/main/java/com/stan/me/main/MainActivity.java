@@ -155,7 +155,6 @@ public class MainActivity extends BaseActivity<MainContract.Presenter> implement
         mPresenter = new MainPresenter();
     }
 
-//    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
