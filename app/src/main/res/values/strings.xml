@@ -3,4 +3,10 @@
     <string name="favorite_movie">我喜欢的电影</string>
     <string name="movie">电影</string>
     <string name="photopraphy">摄影</string>
+    <string name="please_input_title">请输入标题</string>
+    <string name="please_input_content">请输入正文</string>
+    <string name="photo_added">您已添加过该图片</string>
+    <string name="add_success">添加成功</string>
+    <string name="pls_add_title">请添加标题</string>
+    <string name="pls_add_content">请添加内容</string>
 </resources>

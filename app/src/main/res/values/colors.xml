@@ -13,4 +13,5 @@
     <color name="color_level_5">#999999</color> <!-- 用于输入框等提示下文字 -->
     <color name="color_title">#00897B</color>
     <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
 </resources>

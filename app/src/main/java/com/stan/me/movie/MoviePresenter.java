@@ -3,6 +3,7 @@ package com.stan.me.movie;
 import com.stan.core.http.RetrofitHelper;
 import com.stan.core.http.bean.Top250Info;
 import com.stan.core.mvp.BaseView;
+import com.stan.core.mvp.RxPresenter;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
-public class MoviePresenter implements MovieContract.Presenter {
+public class MoviePresenter extends RxPresenter implements MovieContract.Presenter {
 
     private MovieContract.View mView;
 
@@ -21,6 +22,7 @@ public class MoviePresenter implements MovieContract.Presenter {
     public void getMovie() {
         mView.showProgress();
         Observable<Top250Info> movieObservable = RetrofitHelper.getInstance().getDoubanApis().getTop250();
+//        addDisposable(movieObservable);
         movieObservable.map(new Function<Top250Info, List<Top250Info.MovieInfo>>() {
             @Override
             public List<Top250Info.MovieInfo> apply(Top250Info top250Info) throws Exception {
@@ -39,7 +41,7 @@ public class MoviePresenter implements MovieContract.Presenter {
 
             @Override
             public void onError(Throwable e) {
-
+                mView.hideProgress();
             }
 
             @Override

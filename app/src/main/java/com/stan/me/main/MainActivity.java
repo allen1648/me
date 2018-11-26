@@ -1,5 +1,7 @@
 package com.stan.me.main;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,11 +12,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.balysv.materialmenu.MaterialMenuDrawable;
+import com.stan.core.utils.PermissionUtil;
 import com.stan.me.BaseActivity;
 import com.stan.me.R;
-import com.stan.me.movie.MovieFragment;
+import com.stan.me.photography.PhotoFragment;
 
 public class MainActivity extends BaseActivity<MainContract.Presenter> implements MainContract.View {
     private Toolbar mToolbar;
@@ -30,7 +34,12 @@ public class MainActivity extends BaseActivity<MainContract.Presenter> implement
         initToolbar();
         initDrawerLayout();
         initNavigationView();
-        replaceFragment(MovieFragment.getInstance(), MovieFragment.TAG);
+        replaceFragment(PhotoFragment.getInstance(), PhotoFragment.TAG);
+        requestPermissionsIfNeed();
+    }
+
+    private void requestPermissionsIfNeed() {
+        PermissionUtil.requestPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE, PermissionUtil.READ_EXTERNAL_REQUESTCODE);
     }
 
     private void initToolbar() {
@@ -144,5 +153,26 @@ public class MainActivity extends BaseActivity<MainContract.Presenter> implement
     @Override
     public void setPresenter() {
         mPresenter = new MainPresenter();
+    }
+
+//    @RequiresApi(api = Build.VERSION_CODES.M)
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+        case PermissionUtil.READ_EXTERNAL_REQUESTCODE:
+            if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "使用前请先获得权限", Toast.LENGTH_SHORT).show();
+//                boolean b = shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE);
+//                if(!b) {
+                    //TODO 跳到权限获取界面
+//                }
+                finish();
+            }
+            break;
+
+        default:
+            break;
+        }
     }
 }

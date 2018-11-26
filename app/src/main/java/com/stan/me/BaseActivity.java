@@ -13,6 +13,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setPresenter();
         if (mPresenter != null) {
             mPresenter.attachView(this);
         }
