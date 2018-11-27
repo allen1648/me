@@ -9,4 +9,9 @@
     <string name="add_success">添加成功</string>
     <string name="pls_add_title">请添加标题</string>
     <string name="pls_add_content">请添加内容</string>
+    <string name="cancel">取消</string>
+    <string name="sure">确定</string>
+    <string name="delete_this_pic">删除这组图片吗</string>
+    <string name="delete_success">删除成功</string>
+    <string name="delete_fail">删除失败</string>
 </resources>

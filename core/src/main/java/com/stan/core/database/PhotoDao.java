@@ -42,6 +42,11 @@ public class PhotoDao extends BaseDao {
         return result != -1;
     }
 
+    public boolean removePhoto(String uri) {
+        ensureDatabaseOpen();
+        return mSQLiteDatabase.delete(DBHelper.PhotoTable.TABLE_NAME, DBHelper.PhotoTable.URI + " = ?", new String[]{uri}) != 0;
+    }
+
     /**
      * 暂时用uri判断是否是同一张图片
      *

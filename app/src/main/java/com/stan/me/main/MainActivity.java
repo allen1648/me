@@ -18,7 +18,7 @@ import com.balysv.materialmenu.MaterialMenuDrawable;
 import com.stan.core.utils.PermissionUtil;
 import com.stan.me.BaseActivity;
 import com.stan.me.R;
-import com.stan.me.photography.PhotoFragment;
+import com.stan.me.movie.MovieFragment;
 
 public class MainActivity extends BaseActivity<MainContract.Presenter> implements MainContract.View {
     private Toolbar mToolbar;
@@ -34,7 +34,8 @@ public class MainActivity extends BaseActivity<MainContract.Presenter> implement
         initToolbar();
         initDrawerLayout();
         initNavigationView();
-        replaceFragment(PhotoFragment.getInstance(), PhotoFragment.TAG);
+        replaceFragment(MovieFragment.getInstance(), MovieFragment.TAG);
+        setTitle(R.string.movie);
         requestPermissionsIfNeed();
     }
 
@@ -44,7 +45,6 @@ public class MainActivity extends BaseActivity<MainContract.Presenter> implement
 
     private void initToolbar() {
         mToolbar = findViewById(R.id.toolbar);
-        mToolbar.setTitle("Material Dessign");
         mToolbar.setTitleTextColor(Color.WHITE);
         mToolbar.setTitleMargin(0, 0, 0, 0);
         mToolbar.post(new Runnable() {

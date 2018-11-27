@@ -1,12 +1,15 @@
 package com.stan.me.photography;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.stan.core.database.PhotoDao;
 import com.stan.core.utils.DateUtil;
@@ -33,12 +36,41 @@ public class PhotoAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, final int position) {
         PhotoViewHolder holder = (PhotoViewHolder) viewHolder;
+        holder.mCoverIV.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                showDeleteDialog(position);
+                return false;
+            }
+        });
         ImageLoader.getInstance().loadImage(mActivity, mPhotoList.get(position), holder.mCoverIV);
         holder.mTitleTV.setText(mPhotoList.get(position).getTitle());
         holder.mContentTV.setText(mPhotoList.get(position).getContent());
         holder.mDateTV.setText(DateUtil.getDayTime(mPhotoList.get(position).getDate()));
+    }
+
+    private void showDeleteDialog(final int position) {
+        AlertDialog dialog = new AlertDialog.Builder(mActivity).setTitle(R.string.delete_this_pic)
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                }).setPositiveButton(R.string.sure, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        PhotoDao dao = new PhotoDao();
+                        if (dao.removePhoto(mPhotoList.get(position).getUri().toString())) {
+                            Toast.makeText(mActivity, R.string.delete_success, Toast.LENGTH_SHORT).show();
+                            mPhotoList.remove(position);
+                            notifyDataSetChanged();
+                        } else {
+                            Toast.makeText(mActivity, R.string.delete_fail, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }).create();
+        dialog.show();
     }
 
     @Override
